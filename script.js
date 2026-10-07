@@ -1,6 +1,8 @@
 import {LeafletMap, TileLayer} from 'leaflet';
 const map = new LeafletMap('map').setView([0,0], 1);
 
+const clockElem=document.getElementById("clock");
+
 new TileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 5,
     minZoom:2,
@@ -8,7 +10,7 @@ new TileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 function mapClick(e){
-    console.log('click on map'+e.latlng);
+    // console.log('click on map'+e.latlng);
     const lat=e.latlng.lat;
     const long=e.latlng.lng;
     fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${long}&localityLanguage=en`)
@@ -18,10 +20,19 @@ function mapClick(e){
         })
         .catch(error=>console.error("error:"+error))
 
-    fetch(`https://timeapi.io/api/v1/time/current/coordinate?latitude=${lat}&longitude=${long}`)
+    fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&timezone=auto&current_weather=true`)
         .then(res=>res.json())
         .then(data=>{
-            console.log("current time is "+data.time)
+            // console.log("current timezone is "+data.timezone)
+            const tzone=data.timezone;
+            const localtime=new Intl.DateTimeFormat('en-US',{
+                timeZone:tzone,
+                hour:'2-digit',
+                minute:'2-digit',
+                hour12:true
+            }).format(new Date())
+            console.log(`localtime is: ${localtime}`)
+            clockElem.innerText=localtime;
         })
         .catch(error=>console.error("error:"+error))
 }
