@@ -9,19 +9,20 @@
 <body>
     <div class="container">
         <div class="top">
-            <h3 class="logo">timedle</h3>
-            <p>guess the country based on the local time</p>
+            <span class="damek">damek.net</span>
+            <h1 class="logo">timedle</h1>
+            <span class="game-id">guess the country based on the local time</span>
         </div>
-        <div class="game">
-            <div class="time-show">
-                <p>time right now:</p>
-                <h2>00:00</h2>
+        <div class="time-section">
+            <div class="time-info">
+                <span class="time-label">local time:</span>
+                <h2 id="clock">00:00</h2>
             </div>
-            <div class="chooser">
-                <div class="map" id="map">
-                    <p class="info">will show a map where users can choose a country and submit their gguesses here</p>
-                </div>
-            </div> 
+            <div id="time-icon"></div>
+        </div>
+        <div class="map">
+            <div id="map"></div>
+            <button id="guess-btn">guess</button>
         </div>
     </div>
 </body>
