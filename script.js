@@ -1,3 +1,5 @@
+import * as maplibregl from 'https://unpkg.com/maplibre-gl@^6.13.0/dist/maplibre-gl.mjs'
+
 const map = new maplibregl.Map({
     container:'map',
     style: 'https://demotiles.maplibre.org/style.json',
@@ -10,11 +12,18 @@ const map = new maplibregl.Map({
     maxZoom: 5,
     attributionControl: false
 })
-map.addControl(new maplibregl.AttributionControl(),'bottom-left')
+map.addControl(new maplibregl.AttributionControl(),'top-right')
 map.addControl(new maplibregl.NavigationControl(), 'top-right')
 map.addControl(new maplibregl.GlobeControl(),'top-right')
 
 const clockElem=document.getElementById("clock");
+const selectedCountryElem=document.getElementById("selected-country")
+const guessBtn= document.getElementById("guess-btn")
+const winModal=document.getElementById("win")
+const loseModal = document.getElementById("lose")
+const playAgainBtns=document.querySelectorAll(".play-again");
+
+let selTime=null;
 let marker=null;
 
 function mapClick(e){
@@ -28,6 +37,7 @@ function mapClick(e){
         .then(res=>res.json())
         .then(data=>{
             console.log("country is "+data.countryName);
+            selectedCountryElem.innerText=data.countryName;
         })
         .catch(error=>console.error("error:"+error))
 
@@ -36,6 +46,7 @@ function mapClick(e){
         .then(data=>{
             // console.log("current timezone is "+data.timezone)
             const tzone=data.timezone;
+            // console.log(tzone);  
             const localtime=new Intl.DateTimeFormat('en-US',{
                 timeZone:tzone,
                 hour:'2-digit',
@@ -43,7 +54,8 @@ function mapClick(e){
                 hour12:true
             }).format(new Date())
             console.log(`localtime is: ${localtime}`)
-            clockElem.innerText=localtime;
+            // clockElem.innerText=localtime;
+            selTime=localtime;
         })
         .catch(error=>console.error("error:"+error))
     
@@ -54,3 +66,37 @@ function mapClick(e){
 
 map.on('click',mapClick)
 
+clockElem.innerText=setTimeBasedOnTimeZone('Asia/Kathmandu')
+
+function setTimeBasedOnTimeZone(tzone){
+    let curr_time=new Intl.DateTimeFormat('en-US',{
+        timeZone:tzone,
+        hour:'2-digit',
+        minute:'2-digit',
+        hour12:true
+    }).format(new Date())
+    return curr_time;
+    // console.log(curr_time)
+}
+// setTimeBasedOnTimeZone('Asia/Kathmandu')
+
+function onGuess(guessTime){
+    const toBeGuessed=setTimeBasedOnTimeZone('Asia/Kathmandu')
+    if(guessTime===toBeGuessed){
+        console.log("CORRECT!!!");
+        winModal.classList.remove('hidden');
+    } else {
+        console.log("INCORRECT");
+        loseModal.classList.remove('hidden');
+    }
+}
+
+guessBtn.addEventListener('click',()=>{
+    onGuess(selTime)
+});
+
+playAgainBtns.forEach(btn=>{
+    btn.addEventListener('click',()=>{
+        window.location.reload()
+    })
+})

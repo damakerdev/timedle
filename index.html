@@ -9,6 +9,18 @@
 </head>
 <body>
     <div class="container">
+        <div class="modal">
+            <div id="win" class="win hidden">
+                <h2>congratulations!</h2>
+                <p>you guessed it correctly!</p>
+                <buttton class="play-again">Play Again</button>
+            </div>
+            <div id="lose" class="lose hidden">
+                <h2>you lose!</h2>
+                <p>better luck next time!</p>
+                <buttton class="play-again">Play Again</button>
+            </div>
+        </div>
         <div class="top">
             <span class="damek">damek.net</span>
             <h1 class="logo">timedle</h1>
@@ -22,11 +34,11 @@
             <div id="time-icon"></div>
         </div>
         <div class="map">
+            <div class="selected"><p>Selected: <span id="selected-country">none</span></p></div>
             <div id="map"></div>
-            <button id="guess-btn">guess</button>
         </div>
+        <button id="guess-btn">guess</button>
     </div>
-    <script type="module" src="https://unpkg.com/maplibre-gl@^6.13.0/dist/maplibre-gl.mjs"></script>
     <script src="./script.js" type="module"></script>
 </body>
 </html>

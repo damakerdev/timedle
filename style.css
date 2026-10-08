@@ -22,7 +22,7 @@ body {
     flex-direction: column;
     gap: 15px;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex:1;
     padding: 10px;
     width: 100;
@@ -70,6 +70,7 @@ body {
     padding: 14px 20px;
     border-radius: 20px;
     width: 100%;
+    flex-shrink: 0;
 }
 
 .time-label {
@@ -78,7 +79,7 @@ body {
 }
 
 #clock {
-    font-size: 3rem;
+    font-size: 2.5rem;
 }
 
 .map {
@@ -108,11 +109,80 @@ body {
     color: #fff;
     font-size: 1.3rem;
     letter-spacing: -1px;
-    border-radius: 0px;
-    border-top-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-radius: 20px;
+    width: 100%;
+    transition: ease 200ms;
+}
+
+#guess-btn:hover {
+    background-color: #1a30c1;
+}
+
+.selected {
+    position: inherit;
+    font-size: 1.2rem;
+    letter-spacing: -1.2px;
+    z-index: 44444;
+    color: #ffffff;
+    border-top-right-radius: 16px;
+    padding: 10px;
+    background-color: #223fff;
     position: absolute;
-    right: -5px;
-    bottom: -5px;
+    left: -4px;
+    bottom: 0%;
     z-index:33333;
+    text-align: center;
+}
+
+.win {
+    background-color: #373737;
+    padding: 20px;
+    color: #ffffff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 100000;
+    width: 300px;
+    height: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.lose {
+    background-color: #373737;
+    padding: 20px;
+    color: #ffffff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 100000;
+    width: 300px;
+    height: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.play-again  {
+    background-color: #f35151;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-top: 50px;
+    transition: 200ms ease;
+}
+
+.play-again:hover {
+    background-color: #a33131;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
 }
