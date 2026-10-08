@@ -1,18 +1,23 @@
-import {LeafletMap, TileLayer} from 'leaflet';
-const map = new LeafletMap('map').setView([0,0], 1);
+import * as maplibregl from 'https://unpkg.com/maplibre-gl@^6.13.0/dist/maplibre-gl.mjs';
 
-const clockElem=document.getElementById("clock");
-
-new TileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+const map = new maplibregl.Map({
+    container:'map',
+    style: 'https://demotiles.maplibre.org/style.json',
+    center: [0,0],
+    zoom: 2,
+    minZoom: 1,
     maxZoom: 5,
-    minZoom:2,
-    attribution: '&copy; OpenStreetMap contributors'
-}).addTo(map);
+    attributionControl: false
+})
+
+map.addControl(new maplibregl.AttributionControl(),'top-left')
+map.addControl(new maplibregl.NavigationControl(), 'top-right')
+const clockElem=document.getElementById("clock");
 
 function mapClick(e){
     // console.log('click on map'+e.latlng);
-    const lat=e.latlng.lat;
-    const long=e.latlng.lng;
+    const lat=e.lngLat.lat;
+    const long=e.lngLat.lng;
     fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${long}&localityLanguage=en`)
         .then(res=>res.json())
         .then(data=>{

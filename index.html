@@ -5,19 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>timedle</title>
     <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@2.0.0-alpha.1/dist/leaflet.css"
-     integrity="sha256-P+hWJNlpL+GBSRYC7cdsDbQH91URmpDeOzLp7DbFRtE="
-     crossorigin=""/>
-    <script type="importmap">
-    {
-        "imports": {
-            "leaflet": "https://cdn.jsdelivr.net/npm/leaflet@2.0.0-alpha.1/dist/leaflet.js"
-        },
-        "integrity": {
-            "https://cdn.jsdelivr.net/npm/leaflet@2.0.0-alpha.1/dist/leaflet.js": "sha256-gj5JhNAaMi6LCs+jVFOk8sXDe1sWSS2Zlc87m+trLiQ="
-        }
-    }
-    </script>
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@^6.13.0/dist/maplibre-gl.css" />
 </head>
 <body>
     <div class="container">
@@ -38,7 +26,7 @@
             <button id="guess-btn">guess</button>
         </div>
     </div>
+    <script src="https://unpkg.com/maplibre-gl@^6.13.0/dist/maplibre-gl.mjs"></script>
     <script src="./script.js" type="module"></script>
-
 </body>
 </html>
