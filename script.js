@@ -66,7 +66,9 @@ function mapClick(e){
 
 map.on('click',mapClick)
 
-clockElem.innerText=setTimeBasedOnTimeZone('Asia/Kathmandu')
+//defautl time peru hehe .. America/Lima
+const toBeGuessed=setTimeBasedOnTimeZone('America/Lima')
+clockElem.innerText=toBeGuessed
 
 function setTimeBasedOnTimeZone(tzone){
     let curr_time=new Intl.DateTimeFormat('en-US',{
@@ -81,7 +83,6 @@ function setTimeBasedOnTimeZone(tzone){
 // setTimeBasedOnTimeZone('Asia/Kathmandu')
 
 function onGuess(guessTime){
-    const toBeGuessed=setTimeBasedOnTimeZone('Asia/Kathmandu')
     if(guessTime===toBeGuessed){
         console.log("CORRECT!!!");
         winModal.classList.remove('hidden');
