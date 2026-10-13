@@ -30,6 +30,7 @@ let marker=null;
 let guessCount=0;
 let gameOver=null;
 let gameWon=null;
+let targetInterval=null;
 
 remainingGuess.innerText=guessCount;
 
@@ -83,8 +84,13 @@ const tzArr=await res.json();
 // console.log(tzArr[0]);
 const choice=tzArr[Math.floor(Math.random()*tzArr.length)]
 console.log(choice)
-const toBeGuessed=setTimeBasedOnTimeZone(choice)
-clockElem.innerText=toBeGuessed
+let toBeGuessed=setTimeBasedOnTimeZone(choice)
+clockElem.innerText=toBeGuessed;
+
+targetInterval = setInterval(() => {
+    toBeGuessed=setTimeBasedOnTimeZone(choice)
+    clockElem.innerText=toBeGuessed
+}, 1000);
 
 function setTimeBasedOnTimeZone(tzone){
     let curr_time=new Intl.DateTimeFormat('en-US',{
