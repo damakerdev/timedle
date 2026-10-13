@@ -66,8 +66,14 @@ function mapClick(e){
 
 map.on('click',mapClick)
 
-//defautl time peru hehe .. America/Lima
-const toBeGuessed=setTimeBasedOnTimeZone('America/Lima')
+
+const res = await fetch("./timezone-names.json")
+const tzArr=await res.json();
+// console.log(tzArr[0]);
+const choice=tzArr[Math.floor(Math.random()*tzArr.length)]
+console.log(choice)
+
+const toBeGuessed=setTimeBasedOnTimeZone(choice)
 clockElem.innerText=toBeGuessed
 
 function setTimeBasedOnTimeZone(tzone){
@@ -101,3 +107,4 @@ playAgainBtns.forEach(btn=>{
         window.location.reload()
     })
 })
+
