@@ -36,8 +36,12 @@ function mapClick(e){
     fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${long}&localityLanguage=en`)
         .then(res=>res.json())
         .then(data=>{
+            if(data.countryName===""){
+                selectedCountryElem.innerText="none";
+                return;
+            }
             console.log("country is "+data.countryName);
-            selectedCountryElem.innerText=data.countryName;
+            selectedCountryElem.innerText=data.countryName
         })
         .catch(error=>console.error("error:"+error))
 
@@ -72,7 +76,6 @@ const tzArr=await res.json();
 // console.log(tzArr[0]);
 const choice=tzArr[Math.floor(Math.random()*tzArr.length)]
 console.log(choice)
-
 const toBeGuessed=setTimeBasedOnTimeZone(choice)
 clockElem.innerText=toBeGuessed
 
