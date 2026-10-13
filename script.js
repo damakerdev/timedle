@@ -28,6 +28,8 @@ const remainingGuess=document.getElementById("remaining-guesses");
 let selTime=null;
 let marker=null;
 let guessCount=0;
+let gameOver=null;
+let gameWon=null;
 
 remainingGuess.innerText=guessCount;
 
@@ -97,20 +99,16 @@ function setTimeBasedOnTimeZone(tzone){
 // setTimeBasedOnTimeZone('Asia/Kathmandu')
 
 function onGuess(guessTime){
-    if(guessCount>=MAX_GUESS){
-        console.log("its done..")
-        guessBtn.disabled=true;
-        return 0;
+    if(guessTime===toBeGuessed){
+        console.log("CORRECT!!!");
+        winModal.classList.remove('hidden');
+        gameOver=true;
+        gameWon=true;
+        return 1;
     } else {
-        if(guessTime===toBeGuessed){
-            console.log("CORRECT!!!");
-            // winModal.classList.remove('hidden');
-            return 2;
-        } else {
-            console.log("INCORRECT");
-            // loseModal.classList.remove('hidden');
-            return 1;
-        }
+        console.log("INCORRECT");
+        gameOver=false;
+        return 2;
     }
 }
 
@@ -119,6 +117,16 @@ guessBtn.addEventListener('click',()=>{
     if(onGuess(selTime,guessCount)){
         remainingGuess.innerText=guessCount;
     }
+    if(guessCount>=MAX_GUESS){
+        guessBtn.disabled=true;
+        console.log("its done..")
+        if(gameWon===null){
+            loseModal.classList.remove('hidden');
+        }
+        gameOver=true;
+        return 0;
+    }
+    console.log(guessCount)
 });
 
 playAgainBtns.forEach(btn=>{
