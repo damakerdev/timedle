@@ -48,16 +48,25 @@ body {
     transform: translate(-50%);
 }
 
+.game-guess {
+    display: flex;
+    gap: 5px;
+    background-color: #dee63f;
+    padding:10px 20px;
+}
+
 .top span {
     font-weight: 600;
     letter-spacing: -1px;
-    color: #333333;
     font-size: 1.2rem;
 }
 
-.top .damek {
+.damek {
+    color: #333333;
     transition: transform 300ms ease, color 200ms ease;
 }
+
+
 .top .damek:hover {
     cursor: pointer;
     color: #fd2e48;
@@ -116,6 +125,11 @@ body {
 
 #guess-btn:hover {
     background-color: #1a30c1;
+}
+
+#guess-btn:disabled {
+    background-color: #a8abc1;
+    cursor: not-allowed;
 }
 
 .selected {

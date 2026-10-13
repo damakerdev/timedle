@@ -10,21 +10,26 @@ const map = new maplibregl.Map({
     zoom: 2,
     minZoom: 1,
     maxZoom: 5,
-    attributionControl: false
+    attributionControl: false 
 })
 map.addControl(new maplibregl.AttributionControl(),'top-right')
 map.addControl(new maplibregl.NavigationControl(), 'top-right')
 map.addControl(new maplibregl.GlobeControl(),'top-right')
 
+const MAX_GUESS=5;
 const clockElem=document.getElementById("clock");
 const selectedCountryElem=document.getElementById("selected-country")
 const guessBtn= document.getElementById("guess-btn")
 const winModal=document.getElementById("win")
 const loseModal = document.getElementById("lose")
 const playAgainBtns=document.querySelectorAll(".play-again");
+const remainingGuess=document.getElementById("remaining-guesses");
 
 let selTime=null;
 let marker=null;
+let guessCount=0;
+
+remainingGuess.innerText=guessCount;
 
 function mapClick(e){
     // console.log('click on map'+e.latlng);
@@ -92,17 +97,28 @@ function setTimeBasedOnTimeZone(tzone){
 // setTimeBasedOnTimeZone('Asia/Kathmandu')
 
 function onGuess(guessTime){
-    if(guessTime===toBeGuessed){
-        console.log("CORRECT!!!");
-        winModal.classList.remove('hidden');
+    if(guessCount>=MAX_GUESS){
+        console.log("its done..")
+        guessBtn.disabled=true;
+        return 0;
     } else {
-        console.log("INCORRECT");
-        loseModal.classList.remove('hidden');
+        if(guessTime===toBeGuessed){
+            console.log("CORRECT!!!");
+            // winModal.classList.remove('hidden');
+            return 2;
+        } else {
+            console.log("INCORRECT");
+            // loseModal.classList.remove('hidden');
+            return 1;
+        }
     }
 }
 
 guessBtn.addEventListener('click',()=>{
-    onGuess(selTime)
+    guessCount++;
+    if(onGuess(selTime,guessCount)){
+        remainingGuess.innerText=guessCount;
+    }
 });
 
 playAgainBtns.forEach(btn=>{
