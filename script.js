@@ -33,11 +33,12 @@ let gameOver=null;
 let gameWon=null;
 let targetInterval=null;
 let selTz=null;
+let mapClicked=null;
 
 remainingGuess.innerText=guessCount;
 
 function mapClick(e){
-
+    mapClicked=true;
     guessBtn.disabled=true;
     guessBtn.innerText="loading...";
 
@@ -131,13 +132,13 @@ function showPopup(msg,clr){
     popup.classList.remove('hidden')
     switch(clr){
         case 'red':
-            popup.style.backgroundColor='#e02619';
+            popup.style.backgroundColor='#ec4034';
             break;
         case 'green':
-            popup.style.backgroundColor='#19e062'
+            popup.style.backgroundColor='#39f67f'
             break;
         case 'blue':
-            popup.style.backgroundColor='#194ee0'
+            popup.style.backgroundColor='#2d60ea'
             break;
         default:
             break;
@@ -151,7 +152,7 @@ function showPopup(msg,clr){
             popup.classList.add('hidden')
             popup.remove()
         },{once:true})
-    }, 1500);
+    }, 2000);
 }
 
 //target tzone ra utc diff in mins
@@ -207,7 +208,7 @@ function onGuess(guessTime,count,guessedCountry,hintDirn){
         if(count>=MAX_GUESS){
             showPopup(`Incorrect. No tries remaining`,'red');
         } else {
-            showPopup(`Incorrect. You have ${MAX_GUESS-guessCount} tries remaining`,'red');
+            showPopup(`Incorrect. You have ${MAX_GUESS-guessCount} tries remaining.`,'red');
         }
         gameOver=false;
         return 2;
@@ -217,6 +218,10 @@ function onGuess(guessTime,count,guessedCountry,hintDirn){
 
 guessBtn.addEventListener('click',()=>{
     if(gameOver) return;
+    if(!mapClicked) {
+        showPopup('Click on a country on the map.','blue')
+        return;
+    };
     guessCount++;
     remainingGuess.innerText=guessCount;
 

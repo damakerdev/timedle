@@ -23,11 +23,11 @@ body {
     flex-direction: column;
     gap: 10px;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex:1;
     padding: 0 10px 10px 10px;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     max-height: 850px;
 }
 
@@ -94,8 +94,8 @@ body {
 
 .map {
     width: 100%;
-    flex: 1;
-    min-height: 575px;
+    height: 450px;
+    flex-shrink: 0;
     border: 8px solid #194ee0;
     border-radius: 20px; 
     position: relative;
@@ -136,7 +136,7 @@ body {
 }
 
 .selected {
-    font-size: 1.2rem;
+    font-size: 1rem;
     letter-spacing: -1px;
     z-index: 44444;
     color: #ffffff;
@@ -225,7 +225,7 @@ body {
     transform: scale(0.95);
 }
 
-.history-section {
+.guess-section {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -236,6 +236,8 @@ body {
     color: #ffffff;
     padding: 12px;
     border-radius: 20px;
+    margin-bottom: 20px;
+    flex-shrink: 0;
 }
 
 .guess-history {
@@ -244,7 +246,6 @@ body {
     width: 100%;
     gap: 10px;
     margin-top: 5px;
-    flex-shrink: 0;
     align-items: center;
 }
 
@@ -252,6 +253,7 @@ body {
     font-weight: 400;
     font-style: italic;
     color: #0c2770;
+    font-size: 0.9rem;
 }
 
 .guess-history-card {
