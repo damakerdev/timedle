@@ -48,15 +48,16 @@ function mapClick(e){
     if(marker){
         marker.remove();
     }
-    const fetchCountry = fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${long}&localityLanguage=en`)
+    const fetchCountry = fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${long}&addressdetails=1&layer=address&zoom=3`)
         .then(res=>res.json())
         .then(data=>{
-            if(data.countryName===""){
+            console.log(data)
+            if(data.address.country===""){
                 selectedCountryElem.innerText="none";
                 return;
             }
-            console.log("country is "+data.countryName);
-            selectedCountryElem.innerText=data.countryName
+            console.log("country is "+data.address.country);
+            selectedCountryElem.innerText=data.address.country
         })
         .catch(error=>console.error("error:"+error))
 
