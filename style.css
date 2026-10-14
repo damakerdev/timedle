@@ -101,6 +101,7 @@ body {
     position: relative;
 }
 
+
 #map {
     position: absolute;
     top:0;
@@ -178,18 +179,47 @@ body {
     font-size: 20px;
 }
 
+.info-winlose {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #484848;
+    border-radius: 20px;
+}
+
 .play-again  {
-    background-color: #f35151;
     padding: 10px 20px;
     border-radius: 6px;
-    margin-top: 50px;
+    margin-top: 40px;
     font-size: 20px;
     transition: 200ms ease;
 }
 
 .play-again:hover {
-    background-color: #a33131;
     cursor: pointer;
+}
+
+.win {
+    border-color: #0bb84a !important;
+}
+
+.win .play-again {
+    background-color: #0bb84a;
+}
+
+.win .play-again:hover {
+    background-color: #078937;
+}
+
+.lose {
+    border-color: #cc281d !important;
+}
+
+.lose .play-again {
+    background-color: #cc281d;
+}
+
+.lose .play-again:hover {
+    background-color: #8d1911;
 }
 
 .hidden {
@@ -212,7 +242,7 @@ body {
     background-color: #194ee0;
     color: #ffffff;
     padding: 10px 20px;
-    border-radius: 4px;
+    border-radius: 10px;
     font-family: 'Inter',sans-serif;
     font-size: 1rem;
     height: 60px;

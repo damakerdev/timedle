@@ -25,6 +25,10 @@ const loseModal = document.getElementById("lose")
 const playAgainBtns=document.querySelectorAll(".play-again");
 const remainingGuess=document.getElementById("remaining-guesses");
 const historyDiv = document.getElementById('guess-history')
+const mapCss = document.querySelector('.map');
+const selCss = document.querySelector('.selected')
+const modalTime= document.getElementById('time-winlose')
+const modalCountry= document.getElementById('country-winlose')
 
 let selTime=null;
 let marker=null;
@@ -201,7 +205,10 @@ function onGuess(guessTime,count,guessedCountry,hintDirn){
     if(guessTime===toBeGuessed){
         console.log("CORRECT!!!");
         winModal.classList.remove('hidden');
+        mapCss.classList.add('win');
+        selCss.style.display="none";
         showPopup('Correct','green');
+        guessBtn.disabled=true;
         gameOver=true;
         gameWon=true;
         return 1;
@@ -215,7 +222,6 @@ function onGuess(guessTime,count,guessedCountry,hintDirn){
         gameOver=false;
         return 2;
     }
-    
 }
 
 guessBtn.addEventListener('click',()=>{
@@ -242,6 +248,8 @@ guessBtn.addEventListener('click',()=>{
         console.log("its done..")
         if(gameWon===null){
             loseModal.classList.remove('hidden');
+            mapCss.classList.add('lose');
+            selCss.style.display="none";
         }
         gameOver=true;
         return 0;
@@ -254,4 +262,3 @@ playAgainBtns.forEach(btn=>{
         window.location.reload()
     })
 })
-
