@@ -132,10 +132,10 @@ function showPopup(msg,clr){
     popup.classList.remove('hidden')
     switch(clr){
         case 'red':
-            popup.style.backgroundColor='#ec4034';
+            popup.style.backgroundColor='#cc281d';
             break;
         case 'green':
-            popup.style.backgroundColor='#39f67f'
+            popup.style.backgroundColor='#0bb84a'
             break;
         case 'blue':
             popup.style.backgroundColor='#2d60ea'
@@ -154,6 +154,7 @@ function showPopup(msg,clr){
         },{once:true})
     }, 2000);
 }
+// showPopup("TESTING","red")
 
 //target tzone ra utc diff in mins
 function findTimezoneOffset(tz,date=new Date()){
@@ -173,11 +174,11 @@ function directionHint(targetTz, guessTz){
     let hrDiff=Math.abs(Math.floor(minDiff/60));
     let finalminDiff=Math.abs(minDiff%60);
     if(minDiff===0){
-        return "Spot on!!! "
+        return "Spot on!!!"
     } else if(minDiff>0){
-        return `${hrDiff}h ${finalminDiff}min East ➡️`
+        return `[${hrDiff}h ${finalminDiff}min] [East ➡️]`
     } else {
-        return `${hrDiff}h ${finalminDiff}min West ⬅️`
+        return `[${hrDiff}h ${finalminDiff}min] [West ⬅️]`
     }
 }
 
