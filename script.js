@@ -104,15 +104,56 @@ function setTimeBasedOnTimeZone(tzone){
 }
 // setTimeBasedOnTimeZone('Asia/Kathmandu')
 
-function onGuess(guessTime){
+const popupContainer=document.createElement('div')
+popupContainer.className='popup-container';
+document.body.appendChild(popupContainer);
+
+function showPopup(msg,clr){
+    const popup=document.createElement('div')
+    popup.className='popup';
+    popup.innerText=msg;
+    popupContainer.appendChild(popup);
+    popup.classList.remove('hidden')
+    switch(clr){
+        case 'red':
+            popup.style.backgroundColor='#e02619';
+            break;
+        case 'green':
+            popup.style.backgroundColor='#19e062'
+            break;
+        case 'blue':
+            popup.style.backgroundColor='#194ee0'
+            break;
+        default:
+            break;
+    }
+    requestAnimationFrame(()=>{
+        popup.classList.add('fade')
+    })
+    setTimeout(() => {
+        popup.classList.remove('fade')
+        popup.addEventListener('transitionend',()=>{
+            popup.classList.add('hidden')
+            popup.remove()
+        },{once:true})
+    }, 1500);
+}
+
+function onGuess(guessTime,count){
     if(guessTime===toBeGuessed){
         console.log("CORRECT!!!");
         winModal.classList.remove('hidden');
+        showPopup('Correct','green');
         gameOver=true;
         gameWon=true;
         return 1;
     } else {
         console.log("INCORRECT");
+        if(count>=MAX_GUESS){
+            showPopup(`Incorrect. No tries remaining`,'red');
+        } else {
+            showPopup(`Incorrect. You have ${MAX_GUESS-guessCount} tries remaining`,'red');
+        }
         gameOver=false;
         return 2;
     }
