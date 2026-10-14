@@ -37,13 +37,17 @@ let selTz=null;
 remainingGuess.innerText=guessCount;
 
 function mapClick(e){
+
+    guessBtn.disabled=true;
+    guessBtn.innerText="loading...";
+
     // console.log('click on map'+e.latlng);
     const lat=e.lngLat.wrap().lat;
     const long=e.lngLat.wrap().lng;
     if(marker){
         marker.remove();
     }
-    fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${long}&localityLanguage=en`)
+    const fetchCountry = fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${long}&localityLanguage=en`)
         .then(res=>res.json())
         .then(data=>{
             if(data.countryName===""){
@@ -55,7 +59,7 @@ function mapClick(e){
         })
         .catch(error=>console.error("error:"+error))
 
-    fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&timezone=auto&current_weather=true`)
+    const fetchTz = fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&timezone=auto&current_weather=true`)
         .then(res=>res.json())
         .then(data=>{
             // console.log("current timezone is "+data.timezone)
@@ -74,6 +78,13 @@ function mapClick(e){
             selTime=localtime;
         })
         .catch(error=>console.error("error:"+error))
+
+    Promise.all([fetchCountry, fetchTz]).finally(()=>{
+        if(!gameOver){
+            guessBtn.disabled=false;
+            guessBtn.innerText="guess";
+        }
+    })
     
     marker= new maplibregl.Marker()
         .setLngLat([long,lat])
