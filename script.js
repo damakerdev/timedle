@@ -24,6 +24,7 @@ const winModal=document.getElementById("win")
 const loseModal = document.getElementById("lose")
 const playAgainBtns=document.querySelectorAll(".play-again");
 const remainingGuess=document.getElementById("remaining-guesses");
+const historyDiv = document.getElementById('guess-history')
 
 let selTime=null;
 let marker=null;
@@ -31,6 +32,7 @@ let guessCount=0;
 let gameOver=null;
 let gameWon=null;
 let targetInterval=null;
+let selTz=null;
 
 remainingGuess.innerText=guessCount;
 
@@ -67,6 +69,7 @@ function mapClick(e){
             }).format(new Date())
             console.log(`localtime is: ${localtime}`)
             // clockElem.innerText=localtime;
+            selTz=tzone;
             selTime=localtime;
         })
         .catch(error=>console.error("error:"+error))
@@ -139,7 +142,47 @@ function showPopup(msg,clr){
     }, 1500);
 }
 
-function onGuess(guessTime,count){
+//target tzone ra utc diff in mins
+function findTimezoneOffset(tz,date=new Date()){
+    const utc=new Date(date.toLocaleString('en-US',{timeZone: 'UTC'}))
+    const tzDate = new Date(date.toLocaleString('en-US',{ timeZone: tz}))
+    console.log((tzDate-utc)/60000)
+    return (tzDate-utc)/60000;
+}
+
+
+function directionHint(targetTz, guessTz){
+    const targetOffset= findTimezoneOffset(targetTz)
+    const guessedOffset = findTimezoneOffset(guessTz)
+
+    const minDiff= targetOffset-guessedOffset;
+    console.log(minDiff);
+    let hrDiff=Math.abs(Math.floor(minDiff/60));
+    let finalminDiff=Math.abs(minDiff%60);
+    if(minDiff===0){
+        return "Spot on!!! "
+    } else if(minDiff>0){
+        return `${hrDiff}h ${finalminDiff}min East ➡️`
+    } else {
+        return `${hrDiff}h ${finalminDiff}min West ⬅️`
+    }
+}
+
+function onGuess(guessTime,count,guessedCountry,hintDirn){
+    if(historyDiv){
+
+        if(historyDiv.querySelector('p')){
+            historyDiv.querySelector('p').remove();
+        }
+
+        const card=document.createElement('div')
+        card.className='guess-history-card'
+        card.innerHTML=`
+            <span class="country-name">${guessCount}. ${guessedCountry}</span>
+            <span class="hint">${hintDirn}</span>
+        `;
+        historyDiv.prepend(card)
+    }
     if(guessTime===toBeGuessed){
         console.log("CORRECT!!!");
         winModal.classList.remove('hidden');
@@ -157,13 +200,19 @@ function onGuess(guessTime,count){
         gameOver=false;
         return 2;
     }
+    
 }
 
 guessBtn.addEventListener('click',()=>{
+    if(gameOver) return;
     guessCount++;
-    if(onGuess(selTime,guessCount)){
-        remainingGuess.innerText=guessCount;
-    }
+    remainingGuess.innerText=guessCount;
+
+    const currCountry = selectedCountryElem.innerText||'none';
+    const hintTxt = directionHint(choice,selTz)
+
+    onGuess(selTime,guessCount,currCountry,hintTxt)
+
     if(guessCount>=MAX_GUESS){
         guessBtn.disabled=true;
         console.log("its done..")
