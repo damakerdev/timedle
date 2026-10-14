@@ -70,6 +70,7 @@ function mapClick(e){
             console.log(`localtime is: ${localtime}`)
             // clockElem.innerText=localtime;
             selTz=tzone;
+            console.log(selTz)
             selTime=localtime;
         })
         .catch(error=>console.error("error:"+error))
@@ -207,6 +208,11 @@ guessBtn.addEventListener('click',()=>{
     if(gameOver) return;
     guessCount++;
     remainingGuess.innerText=guessCount;
+
+    if(!selTz || !selTime){
+        showPopup('Please try again!',"blue");
+        return;
+    }
 
     const currCountry = selectedCountryElem.innerText||'none';
     const hintTxt = directionHint(choice,selTz)

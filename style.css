@@ -119,7 +119,7 @@ body {
     color: #fff;
     font-size: 1.3rem;
     letter-spacing: -1px;
-    border-radius: 20px;
+    border-radius: 12px;
     width: 100%;
     transition: ease 200ms;
     flex-shrink: 0;
@@ -232,16 +232,10 @@ body {
     width: 100%;
     gap: 8px;
     margin-top: 5px;
-    background-color: #373737;
+    background-color: #eceeff;
     color: #ffffff;
-    padding: 20px;
+    padding: 12px;
     border-radius: 20px;
-}
-
-.history-section h3 {
-    font-size: 1.3rem;
-    letter-spacing: -1px;
-    font-weight: 600;
 }
 
 .guess-history {
@@ -257,15 +251,15 @@ body {
 .guess-history p{
     font-weight: 400;
     font-style: italic;
-    color: #f6f6f6;
+    color: #0c2770;
 }
 
 .guess-history-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #edf2ff;
-    color: #313131;
+    background-color: #3f4451;
+    color: #ffffff;
     padding: 10px 20px;
     width: 100%;
     border-radius: 10px;
