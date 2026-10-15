@@ -29,6 +29,8 @@ const mapCss = document.querySelector('.map');
 const selCss = document.querySelector('.selected')
 const modalTime= document.getElementById('time-winlose')
 const modalCountry= document.getElementById('country-winlose')
+const pupils= document.querySelectorAll('.pupil');
+
 
 let selTime=null;
 let marker=null;
@@ -256,6 +258,24 @@ guessBtn.addEventListener('click',()=>{
     }
     console.log(guessCount)
 });
+
+window.addEventListener('mousemove',(e)=>{
+    if(gameOver){
+        pupils.forEach(pupil=>{
+            const rect=pupil.getBoundingClientRect();
+            const pupX=rect.left+rect.width/2;
+            const pupY=rect.top+rect.height/2;
+            // console.log(pupX,pupY)
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            const rad= Math.atan2(mouseY-pupY,mouseX-pupX)
+            const maxDist=3;
+            const moveX=Math.cos(rad)*maxDist;
+            const moveY=Math.sin(rad)*maxDist;
+            pupil.style.transform=`translate(${moveX}px,${moveY}px)`
+        })
+    }
+})
 
 playAgainBtns.forEach(btn=>{
     btn.addEventListener('click',()=>{
