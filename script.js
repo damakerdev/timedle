@@ -282,3 +282,44 @@ playAgainBtns.forEach(btn=>{
         window.location.reload()
     })
 })
+
+
+//timezone map
+const tzMap = new maplibregl.Map({
+    container:'timezone-map',
+    style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
+    center: [80,30],
+    zoom: 1,
+    minZoom: 1,
+    maxZoom: 2,
+    attributionControl: false 
+})
+tzMap.addControl(new maplibregl.AttributionControl(),'top-right')
+tzMap.addControl(new maplibregl.NavigationControl(), 'top-right')
+tzMap.addControl(new maplibregl.GlobeControl(),'top-right')
+
+tzMap.on('load',()=>{
+    tzMap.addSource('timezones',{
+        type:'geojson',
+        data: './timezones.json'
+    })
+    tzMap.addLayer({
+        id: 'timezone-layer',
+        type: 'fill',
+        source: 'timezones',
+        paint: {
+            'fill-color': ['get','color'],
+            'fill-opacity': 1
+        }
+    })
+    tzMap.addLayer({
+        id: 'timezone-border',
+        type: 'line',
+        source:'timezones',
+        paint: {
+            'line-color': '#ffffff',
+            'line-width':1,
+            'line-opacity':0.8
+        }
+    })
+})
