@@ -1,4 +1,5 @@
 import * as maplibregl from 'https://unpkg.com/maplibre-gl@^6.13.0/dist/maplibre-gl.mjs'
+import { GeoGrid } from 'https://esm.sh/geogrid-maplibre-gl';
 
 const map = new maplibregl.Map({
     container:'map',
@@ -287,39 +288,24 @@ playAgainBtns.forEach(btn=>{
 //timezone map
 const tzMap = new maplibregl.Map({
     container:'timezone-map',
-    style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
-    center: [80,30],
+    style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
+    center: [0,0],
     zoom: 1,
     minZoom: 1,
     maxZoom: 2,
     attributionControl: false 
 })
 tzMap.addControl(new maplibregl.AttributionControl(),'top-right')
-tzMap.addControl(new maplibregl.NavigationControl(), 'top-right')
 tzMap.addControl(new maplibregl.GlobeControl(),'top-right')
 
 tzMap.on('load',()=>{
-    tzMap.addSource('timezones',{
-        type:'geojson',
-        data: './timezones.json'
-    })
-    tzMap.addLayer({
-        id: 'timezone-layer',
-        type: 'fill',
-        source: 'timezones',
-        paint: {
-            'fill-color': ['get','color'],
-            'fill-opacity': 1
+    new GeoGrid({
+        'map':tzMap,
+        'gridStyle':  {
+            'color': '#585858',
+            'width': 1,
+            'dasharray': [4,4]
         }
     })
-    tzMap.addLayer({
-        id: 'timezone-border',
-        type: 'line',
-        source:'timezones',
-        paint: {
-            'line-color': '#ffffff',
-            'line-width':1,
-            'line-opacity':0.8
-        }
-    })
+
 })
