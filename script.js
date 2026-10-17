@@ -286,26 +286,26 @@ playAgainBtns.forEach(btn=>{
 
 
 //timezone map
-const tzMap = new maplibregl.Map({
-    container:'timezone-map',
-    style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
-    center: [0,0],
-    zoom: 1,
-    minZoom: 1,
-    maxZoom: 2,
-    attributionControl: false 
-})
-tzMap.addControl(new maplibregl.AttributionControl(),'top-right')
-tzMap.addControl(new maplibregl.GlobeControl(),'top-right')
+// const tzMap = new maplibregl.Map({
+//     container:'timezone-map',
+//     style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
+//     center: [0,0],
+//     zoom: 1,
+//     minZoom: 1,
+//     maxZoom: 2,
+//     attributionControl: false 
+// })
+// tzMap.addControl(new maplibregl.AttributionControl(),'top-right')
+// tzMap.addControl(new maplibregl.GlobeControl(),'top-right')
 
-tzMap.on('load',()=>{
-    new GeoGrid({
-        'map':tzMap,
-        'gridStyle':  {
-            'color': '#585858',
-            'width': 1,
-            'dasharray': [4,4]
-        }
-    })
+// tzMap.on('load',()=>{
+//     new GeoGrid({
+//         'map':tzMap,
+//         'gridStyle':  {
+//             'color': '#585858',
+//             'width': 1,
+//             'dasharray': [4,4]
+//         }
+//     })
 
-})
+// })

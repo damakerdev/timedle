@@ -86,17 +86,148 @@
             </div>
         </div>
     </div>
-    <img src="img/separator.png" alt="" class="separator">
+    <img src="./img/separator.png" alt="" class="separator">
     <div class="info-container">
         <div class="info-text">
+            <h3>How do timezones work?</h3>
+            <p></p>
+            <img class="how-img" src="./img/how-timezone-works.png" alt="">
+        </div>
+        <h1 class="info-head">BUT</h1>
+        <h3 class="info-subhead">The timezone map is not so straightforward IRL.</h3>
+        <p class="info-para">Due to country borders, these straight lines twist around the boundaries so that entire countries don't have to split their time down the middle.</p>
+        <div class="info-text">
             <h3>Timezone Map</h3>
-            <p>Visualize how time changes in various parts of the world</p>
+            <p>Learn how time changes in various parts of the world</p>
         </div>
         <div class="timezone-map">
-            <div id="timezone-map"></div>
+            <!-- <div id="timezone-map"></div> -->
+            <div id="chartdiv"></div>
         </div>
+
+
     </div>
 
+
+    <!-- code snippet given by amcharts map editor, didn't write this, edited the map on the editor and they gave this code to embed the map into this site :) -->
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZonesLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZoneAreasLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Responsive.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Monochrome.js"></script>
+    <script>
+    am5.ready(function() {
+
+    var root = am5.Root.new("chartdiv", {
+        renderer: am5.SVGRenderer
+    });
+
+    var responsive = am5themes_Responsive.new(root); 
+    root.setThemes([
+        am5themes_Animated.new(root),
+        // am5themes_Monochrome.new(root, { color: 0x2F80ED, interleave: true, mapShade: false, keepContrast: true }),
+        responsive
+    ]);
+
+    var chart = root.container.children.push(
+    am5map.MapChart.new(root, {
+        minZoomLevel: 1, 
+        panX: "translateX",
+        panY: "translateY",
+        boxZoom: "shift",
+        projection: am5map.geoEquirectangular()
+    })
+    );
+
+    var colorSet = am5.ColorSet.new(root, {}); 
+    var waterSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
+        affectsBounds: false
+    }));
+
+    waterSeries.mapPolygons.template.setAll({
+        fill: root.interfaceColors.get("alternativeBackground"), 
+        fillOpacity: 0,
+        strokeOpacity: 0 
+    });
+
+    waterSeries.data.push({
+        geometry: am5map.getGeoRectangle(90, 180, -90, -180)
+    });
+
+    var graticuleSeries = chart.series.push(am5map.GraticuleSeries.new(root, {
+        step: 10
+    }));
+
+    graticuleSeries.mapLines.template.setAll({
+        stroke: root.interfaceColors.get("alternativeBackground"),
+        strokeOpacity: 0.0
+    });
+
+    var areaSeries = chart.series.push(
+    am5map.MapPolygonSeries.new(root, {
+        geoJSON: am5geodata_worldTimeZoneAreasLow
+    })
+    );
+
+    var areaPolygonTemplate = areaSeries.mapPolygons.template;
+    areaPolygonTemplate.setAll({ fillOpacity: 0.6 });
+    areaPolygonTemplate.adapters.add("fill", function (fill, target) {
+    return am5.Color.saturate(
+        colorSet.getIndex(areaSeries.mapPolygons.indexOf(target)),
+        0.8
+    );
+    });
+
+    areaPolygonTemplate.states.create("hover", { fillOpacity: 0.8 });
+
+    var zoneSeries = chart.series.push(
+    am5map.MapPolygonSeries.new(root, {
+        geoJSON: am5geodata_worldTimeZonesLow,
+        affectsBounds: false
+    })
+    );
+
+    var zonePolygonTemplate = zoneSeries.mapPolygons.template;
+    zonePolygonTemplate.setAll({
+    fill: root.interfaceColors.get("alternativeBackground"), 
+    fillOpacity: 0.1,
+    interactive: true,
+    tooltipText: "{id}"
+    });
+    zonePolygonTemplate.states.create("hover", { fillOpacity: 0.6 });
+
+    var labelSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
+    labelSeries.bullets.push(function () {
+    return am5.Bullet.new(root, {
+        sprite: am5.Label.new(root, {
+        text: "{offset}",
+        populateText: true,
+        centerX: am5.p50,  
+        centerY: am5.p50,
+        fontSize: "0.7em" 
+        })
+    });
+    });
+
+    function offsetData(step) {
+    var data = [];
+    for (var hours = -12; hours <= 12; hours += step) {
+        data.push({
+        offset: hours > 0 ? "+" + hours : String(hours),
+        longitude: Math.max(-176, Math.min(176, hours * 15)),
+        latitude: -50
+        });
+    }
+    return data;
+    }
+    labelSeries.data.setAll(offsetData(1)); 
+    chart.appear(1000, 100);
+    });
+    </script>
+    
     <script src="./script.js" type="module"></script>
+
 </body>
 </html>
