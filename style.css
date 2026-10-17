@@ -364,6 +364,107 @@ body {
 }
 
 
+.separator {
+    padding: 0 10px;
+    margin-top: 40px;
+}
+
+
+.info-container {
+    margin-top: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.info-text h3 {
+    font-size: 1.8rem;
+    letter-spacing: -0.5px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.info-text p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+.timezone-map {
+    width: 100%;
+    height: 300px;
+    flex-shrink: 0;
+    border-radius: 20px; 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    position: relative;
+}
+
+.timezone-map p {
+    position: absolute;
+    transform: rotate(90deg);
+    font-size:2.5rem;
+    font-weight: 600;
+    top:35%;
+    right: -16.4%;
+    color: #1c55a3;
+    letter-spacing: -0.8px;    
+    z-index: 9999;
+}
+
+.how-img {
+    width: 105%;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    letter-spacing: -0.5px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.info-head {
+    font-size: 3rem;
+    font-style: italic;  
+    font-weight: 800;
+}
+
+.info-subhead {
+    font-size: 1.4rem;
+    line-height: 95%;
+    font-weight: 500;
+    color: #333333;
+}
+
+.info-para {
+    font-size: 1rem;
+    padding: 5px;
+    margin-bottom: 30px;
+    color: #555555;
+}
+
+
+#chartdiv {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background-color: #2e7eea;
+}
+
+.red-txt {
+    color: #fd2e48;
+}
+
+
 @media screen and (max-width: 768px){
     .top {
         display: flex;
@@ -415,111 +516,49 @@ body {
     #clock {
         font-size: 2.5rem;
     }
-}
 
-.separator {
-    padding: 0 10px;
-    margin-top: 40px;
-}
+    .how-img {
+        width: 110%;
+    }
 
-
-.info-container {
-    margin-top: 10px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-}
-
-.info-text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.info-text h3 {
-    font-size: 1.8rem;
-    letter-spacing: -0.5px;
-    text-align: center;
-    margin-bottom: 5px;
-}
-
-.info-text p {
-    font-size: 1rem;
-    color: #555;
-    margin-bottom: 15px;
-}
-
-.timezone-map span {
-    color: #888;
-    font-size: 0.85rem;
-    margin-bottom: 10px;
-}
-
-.timezone-map {
-    width: 100%;
-    height: 300px;
-    flex-shrink: 0;
-    border-radius: 20px; 
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-    position: relative;
-}
-
-.timezone-map p {
+    .timezone-map p {
     position: absolute;
-    right: -17.1%;
-    font-size: 2.6rem;
+    font-size:1.8rem;
     font-weight: 600;
-    top: 38%;
-    transform-origin: 50%;
+    top:-8.8%;
+    right: 6%;
     color: #1c55a3;
-    transform: rotate(90deg);    
     letter-spacing: -0.8px;    
     z-index: 9999;
-}
+    transform: rotate(0deg);
+    }
 
-.how-img {
-    width: 105%;
-}
+    .info {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        letter-spacing: -0.5px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
 
-.info {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-    letter-spacing: -0.5px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
+    .info-head {
+        font-size: 2.5rem;
+        font-style: italic;  
+        font-weight: 800;
+    }
 
-.info-head {
-    font-size: 3.2rem;
-    font-style: italic;  
-    font-weight: 800;
-}
+    .info-subhead {
+        font-size: 1.2rem;
+        line-height: 95%;
+        font-weight: 500;
+        color: #333333;
+    }
 
-.info-subhead {
-    font-size: 1.5rem;
-    line-height: 95%;
-    font-weight: 500;
-    color: #333333;
-}
-
-.info-para {
-    font-size: 1rem;
-    padding: 5px;
-    margin-bottom: 30px;
-    color: #555555;
-}
-
-
-#chartdiv {
-  width: 100%;
-  height: 100%;
-  border-radius: 20px;
-  background-color: #2e7eea;
-}
-
-.red-txt {
-    color: #fd2e48;
+    .info-para {
+        font-size: 1rem;
+        padding: 5px;
+        margin-bottom: 30px;
+        color: #555555;
+    }
 }
