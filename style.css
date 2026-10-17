@@ -1,4 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300..900&display=swap');
+@font-face {
+  font-family: InterVariable;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: block; /* <-- block, not swap */
+  src: url("./font/InterVariable.woff2?v=4.0") format("woff2");
+}
+
+@font-feature-values InterVariable {
+  @styleset {
+    alt-digits: 1;
+    disambiguation: 2;
+    round-quotes: 2;
+  }
+  @character-variant {
+    cv01: 1;
+    alt-one: 1;
+    cv02: 2;
+    alt-four: 2;
+    cv03: 3;
+    alt-six: 3;
+    cv04: 4;
+    alt-nine: 4;
+    cv05: 5;
+    l-tail: 5;
+    cv06: 6;
+    simple-u: 6;
+    cv07: 7;
+    alt-german-s: 7;
+    cv08: 8;
+    cap-i-serif: 8;
+    cv09: 9;
+    alt-three: 9;
+    cv10: 10;
+    cap-g-spur: 10;
+    cv11: 11;
+    simple-a: 11;
+    cv12: 12;
+    compact-f: 12;
+    cv13: 13;
+    compact-t: 13;
+  }
+}
 
 * {
     box-sizing: border-box;
@@ -8,7 +50,8 @@
 
 body {
     background-color: rgb(255, 255, 255);
-    font-family: 'Inter',sans-serif;
+    font-family: 'InterVariable',sans-serif;
+    font-feature-settings:'cv05' 1,'cv10' 1,'cv11' 1,'liga' 1,'calt' 1;
     color: #000000;
     max-width: 600px;
     margin: 0 auto;
@@ -402,16 +445,38 @@ body {
 .info-text p {
     font-size: 1rem;
     color: #555;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
+.timezone-map span {
+    color: #888;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+}
 
 .timezone-map {
     width: 100%;
     height: 300px;
     flex-shrink: 0;
     border-radius: 20px; 
-    background-color: #2e7eea;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    position: relative;
+}
+
+.timezone-map p {
+    position: absolute;
+    right: -17.1%;
+    font-size: 2.6rem;
+    font-weight: 600;
+    top: 38%;
+    transform-origin: 50%;
+    color: #1c55a3;
+    transform: rotate(90deg);    
+    letter-spacing: -0.8px;    
+    z-index: 9999;
 }
 
 .how-img {
@@ -450,8 +515,9 @@ body {
 
 #chartdiv {
   width: 100%;
-  height: 300px;
+  height: 100%;
   border-radius: 20px;
+  background-color: #2e7eea;
 }
 
 .red-txt {
