@@ -401,7 +401,7 @@ body {
     transform: rotate(270deg);
     font-size:2.5rem !important;
     font-weight: 600;
-    top:62%;
+    top:40%;
     left: -19.3%;
     color: #1c55a3 !important;
     letter-spacing: -0.8px;    
@@ -450,8 +450,17 @@ body {
     font-size: 1.1rem;
 }
 
+.greens {
+    color: #129147;
+}
+
 .blues {
     color: #3080ed;
+}
+
+.und-dot {
+    text-decoration: underline;
+    text-decoration-style: dotted;
 }
 
 .calcn-info{
