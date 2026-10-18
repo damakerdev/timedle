@@ -2,7 +2,7 @@
   font-family: InterVariable;
   font-style: normal;
   font-weight: 100 900;
-  font-display: block; /* <-- block, not swap */
+  font-display: block;
   src: url("./font/InterVariable.woff2?v=4.0") format("woff2");
 }
 
@@ -387,16 +387,16 @@ body {
     color: #555555;
     font-size: 0.85rem;
 }
-.how-graphic {
+.summary-graphic {
     position: relative;
     height: 100%;
 }
 
-.how-img {
+.summary-img {
     width: 100%;
 }
 
-.how-img-txt {
+.summary-txt {
     position: absolute;
     transform: rotate(270deg);
     font-size:2.5rem !important;
@@ -437,6 +437,57 @@ body {
     color: #555555;
 }
 
+
+.earth-spin {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+}
+
+.spin-info p {
+    color: #000000;
+    font-size: 1.1rem;
+}
+
+.blues {
+    color: #3080ed;
+}
+
+.calcn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+    gap: 15px;
+}
+.calcn-info{
+    font-size: 1.1rem;
+    margin-top: 20px;
+}
+
+.fracn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    font-size: 1.1rem;
+}
+
+.num {
+    padding-bottom: 5px;
+    border-bottom: 1.9px solid #555555;
+}
+
+.ans {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.earth-gif {
+    width: 240px;
+    margin: 40px 0px;
+}
 
 #chartdiv {
   width: 100%;
@@ -506,7 +557,7 @@ body {
         display: none;        
     }
 
-    .how-img-txt {
+    .summary-txt {
         display: none;
     }
 
