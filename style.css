@@ -454,16 +454,17 @@ body {
     color: #3080ed;
 }
 
-.calcn {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 10px;
-    gap: 15px;
-}
 .calcn-info{
     font-size: 1.1rem;
     margin-top: 20px;
+}
+
+.calcn {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    gap: 15px;
+    font-size: 1.1rem;
 }
 
 .fracn {
@@ -471,7 +472,6 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 5px;
-    font-size: 1.1rem;
 }
 
 .num {
@@ -487,6 +487,10 @@ body {
 .earth-gif {
     width: 240px;
     margin: 40px 0px;
+}
+
+.earth-gif-phone{
+    display: none;
 }
 
 #chartdiv {
@@ -589,4 +593,25 @@ body {
         margin-bottom: 30px;
         color: #555555;
     }
+
+    .earth-gif {
+        display: none;
+    }
+    .earth-gif-phone {
+        width: 120px;
+        display: inline;
+    }
+    .earth-spin{
+        gap: 0;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    } 
+
+    .earth-calcn {
+        display: flex;
+        flex-direction:row-reverse;
+        gap: 20px;
+        justify-content: center;
+    }
+
 }
