@@ -6,42 +6,6 @@
   src: url("./font/InterVariable.woff2?v=4.0") format("woff2");
 }
 
-@font-feature-values InterVariable {
-  @styleset {
-    alt-digits: 1;
-    disambiguation: 2;
-    round-quotes: 2;
-  }
-  @character-variant {
-    cv01: 1;
-    alt-one: 1;
-    cv02: 2;
-    alt-four: 2;
-    cv03: 3;
-    alt-six: 3;
-    cv04: 4;
-    alt-nine: 4;
-    cv05: 5;
-    l-tail: 5;
-    cv06: 6;
-    simple-u: 6;
-    cv07: 7;
-    alt-german-s: 7;
-    cv08: 8;
-    cap-i-serif: 8;
-    cv09: 9;
-    alt-three: 9;
-    cv10: 10;
-    cap-g-spur: 10;
-    cv11: 11;
-    simple-a: 11;
-    cv12: 12;
-    compact-f: 12;
-    cv13: 13;
-    compact-t: 13;
-  }
-}
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -51,7 +15,7 @@
 body {
     background-color: rgb(255, 255, 255);
     font-family: 'InterVariable',sans-serif;
-    font-feature-settings:'cv05' 1,'cv10' 1,'cv11' 1,'liga' 1,'calt' 1;
+    font-feature-settings:'cv05' 1,'cv08' 1,'cv10' 1,'cv11' 1,'liga' 1,'calt' 1;
     color: #000000;
     max-width: 600px;
     margin: 0 auto;
@@ -139,7 +103,7 @@ body {
     width: 100%;
     height: 380px;
     flex-shrink: 0;
-    border: 8px solid #194ee0;
+    border: 8px solid #1766d3;
     border-radius: 20px; 
     position: relative;
 }
@@ -158,7 +122,7 @@ body {
 #guess-btn {
     padding: 12px 24px;
     border: none;
-    background-color: #194ee0;
+    background-color: #1766d3;
     font-family: 'Inter',sans-serif;
     color: #fff;
     font-size: 1.3rem;
@@ -170,7 +134,7 @@ body {
 }
 
 #guess-btn:hover {
-    background-color: #0d2f8f;
+    background-color: #1c55a3;
     cursor: pointer;
 }
 
@@ -186,7 +150,7 @@ body {
     color: #ffffff;
     border-top-right-radius: 16px;
     padding: 10px;
-    background-color: #194ee0;
+    background-color: #1766d3;
     position: absolute;
     left: -4px;
     bottom: 0%;
@@ -293,7 +257,7 @@ body {
 }
 
 .popup{
-    background-color: #194ee0;
+    background-color: #3080ed;
     color: #ffffff;
     padding: 10px 20px;
     border-radius: 10px;
@@ -346,7 +310,7 @@ body {
 .guess-history p{
     font-weight: 400;
     font-style: italic;
-    color: #0c2770;
+    color: #3080ed;
     font-size: 0.9rem;
 }
 
@@ -438,7 +402,7 @@ body {
     font-size:2.5rem !important;
     font-weight: 600;
     top:62%;
-    left: -17.8%;
+    left: -19.3%;
     color: #1c55a3 !important;
     letter-spacing: -0.8px;    
     z-index: 9999;
@@ -538,12 +502,12 @@ body {
         font-size: 2.5rem;
     }
 
-    .how-img {
-        width: 100%;
-    }
-
     .timezone-map p {
         display: none;        
+    }
+
+    .how-img-txt {
+        display: none;
     }
 
     .info {
