@@ -203,17 +203,20 @@ body {
 
 .btns {
     display: flex;
-    flex-direction: row;
-    gap: 20px;
-    height: 40px;
+    gap: 12px;
     margin-top: 30px;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 380px;
 }
 
-
-
-.play-again  {
-    padding: 10px 20px;
-    flex:1;
+.play-again, .btns> a {
+    flex:1 1 100px;
+    display: flex;
+    text-align: center;
+}
+.play-again, .learn  {
+    padding: 10px 15px;
     font-family: 'InterVariable',sans-serif;
     font-feature-settings: inherit;
     border-radius: 6px;
@@ -222,6 +225,9 @@ body {
     border: none;
     color: #fff;
     letter-spacing: -0.5px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -231,13 +237,7 @@ a {
 }
 
 .learn {
-    padding: 10px 20px;
-    border-radius: 6px;
     background-color: #3080ed;
-    font-size: 18px;
-    transition: 200ms ease;
-    letter-spacing: -0.5px;
-    flex: 1;
 }
 
 a:has(.learn){
@@ -354,7 +354,7 @@ a:has(.learn){
 .guess-history p{
     font-weight: 400;
     font-style: italic;
-    color: #3080ed;
+    color: #093164;
     font-size: 0.9rem;
 }
 
@@ -491,8 +491,8 @@ a:has(.learn){
 .earth-spin {
     display: flex;
     flex-direction: row;
-    gap: 30px;
     align-items: center;
+    gap: 50px;
 }
 
 .spin-info p {
@@ -516,7 +516,7 @@ a:has(.learn){
     margin: 0 !important;
 }
 
-.info a {
+.info-container a {
     color: #3080ed !important;
     border-bottom: 2px dotted;
     text-decoration: none;
@@ -592,13 +592,10 @@ h4 {
     margin-top: 20px;
 }
 .earth-gif {
-    width: 240px;
+    width: 200px;
     margin: 25px 0px;
 }
 
-.earth-gif-phone{
-    display: none;
-}
 
 #chartdiv {
   width: 100%;
@@ -723,6 +720,10 @@ ul {
         font-weight: 800;
     }
 
+    .ans {
+        font-size: 1.2rem !important;
+    }
+
     .info-subhead {
         font-size: 1.2rem;
         line-height: 95%;
@@ -736,29 +737,19 @@ ul {
     }
 
     .earth-gif {
-        display: none;
+        width: 120px;
+        margin-right: 20px;
     }
 
     .day-night-img {
         width: 100%;
     }
 
-    .earth-gif-phone {
-        width: 120px;
-        display: inline;
-    }
     .earth-spin{
         gap: 0;
-        margin-top: 20px;
+        margin-top: 0px;
         margin-bottom: 30px;
     } 
-
-    .earth-calcn {
-        display: flex;
-        flex-direction:row-reverse;
-        gap: 20px;
-        justify-content: center;
-    }
 
     .east-west {
         display: none;
