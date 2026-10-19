@@ -6,6 +6,10 @@
   src: url("./font/InterVariable.woff2?v=4.0") format("woff2");
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -123,7 +127,7 @@ body {
     padding: 12px 24px;
     border: none;
     background-color: #1766d3;
-    font-family: 'Inter',sans-serif;
+    font-family: 'InterVariable',sans-serif;
     color: #fff;
     font-size: 1.3rem;
     letter-spacing: -1px;
@@ -197,15 +201,55 @@ body {
     border-radius: 20px;
 }
 
+.btns {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    height: 40px;
+    margin-top: 30px;
+}
+
+
+
 .play-again  {
     padding: 10px 20px;
+    flex:1;
+    font-family: 'InterVariable',sans-serif;
+    font-feature-settings: inherit;
     border-radius: 6px;
-    margin-top: 40px;
-    font-size: 20px;
+    font-size: 18px;
     transition: 200ms ease;
     border: none;
     color: #fff;
+    letter-spacing: -0.5px;
 }
+
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.learn {
+    padding: 10px 20px;
+    border-radius: 6px;
+    background-color: #3080ed;
+    font-size: 18px;
+    transition: 200ms ease;
+    letter-spacing: -0.5px;
+    flex: 1;
+}
+
+a:has(.learn){
+    display: flex;
+}
+
+.learn:hover {
+    background-color: #1c55a3;
+    cursor: pointer;
+}
+
+
 
 
 .pupil {
@@ -261,7 +305,7 @@ body {
     color: #ffffff;
     padding: 10px 20px;
     border-radius: 10px;
-    font-family: 'Inter',sans-serif;
+    font-family: 'InterVariable',sans-serif;
     font-size: 1rem;
     height: 60px;
     display: flex;
@@ -330,7 +374,7 @@ body {
 
 .separator {
     padding: 0 10px;
-    margin-top: 40px;
+    margin-top: 60px;
 }
 
 
@@ -472,8 +516,7 @@ body {
     margin: 0 !important;
 }
 
-
-a {
+.info a {
     color: #3080ed !important;
     border-bottom: 2px dotted;
     text-decoration: none;

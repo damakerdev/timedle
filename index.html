@@ -52,7 +52,12 @@
                 <h2>congratulations!</h2>
                 <p>you guessed it correctly!</p>
                 <!-- <p class="info-winlose">it is <span id="time-winlose">TIME</span> in <span id="country-winlose">COUNTRY</span></p> -->
-                <buttton class="play-again">Play Again</button>
+                 <div class="btns">
+                     <buttton class="play-again">Play Again</button>
+                        <a href="#learn">
+                            <buttton class="learn">Learn about timezones</button>
+                        </a>
+                 </div>
             </div>
             <div id="lose" class="winlose lose hidden">
                 <!-- <img class="logo-winlose" src="./img/wrong.svg" alt="" srcset=""> -->
@@ -75,8 +80,14 @@
                 </div>
                 <h2>you lose!</h2>
                 <p>better luck next time!</p>
+                <div class="btns">
+                    <button class="play-again">Play Again</button>
+                    <a href="#learn">
+                        <buttton class="learn">Learn about timezones</button>
+                    </a>
+                </div>
                 <!-- <p class="info-winlose">it is <span id="time-winlose">TIME</span> in <span id="country-winlose">COUNTRY</span></p> -->
-                <button class="play-again">Play Again</button>
+
             </div>
             <div class="selected"><p>Selected: <span id="selected-country">none</span></p></div>
         </div>
@@ -88,7 +99,7 @@
         </div>
     </div>
     <img src="./img/separator.png" alt="" class="separator">
-    <div class="info-container">
+    <div class="info-container" id="learn">
         <div class="info-text">
             <div class="exceptions day-night">
                 <h3 class="info-header">It's 5AM for you but 9PM for your friend abroad. Why?</h3>
