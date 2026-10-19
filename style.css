@@ -672,6 +672,11 @@ ul {
     color: #666666;
 }
 
+.credits a {
+    border: none;
+    color: #666666;
+}
+
 @media screen and (max-width: 768px){
     .top {
         display: flex;
