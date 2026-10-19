@@ -389,6 +389,7 @@ body {
 }
 .summary-graphic {
     position: relative;
+    margin-top: 20px;
     height: 100%;
 }
 
@@ -459,8 +460,7 @@ body {
 }
 
 .und-dot {
-    text-decoration: underline;
-    text-decoration-style: dotted;
+    border-bottom: 2px dotted;
 }
 
 .calcn-info{
@@ -509,10 +509,22 @@ body {
   background-color: #2e7eea;
 }
 
+.utc {
+    display: flex;
+    flex-direction: column;
+}
+
 .red-txt {
     color: #fd2e48;
 }
 
+.nutshell {
+    display: none;
+}
+
+a {
+    text-decoration: none;
+}
 
 @media screen and (max-width: 768px){
     .top {

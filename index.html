@@ -6,6 +6,7 @@
     <title>timedle</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@^6.13.0/dist/maplibre-gl.css" />
+    <script src="https://cdn.jsdelivr.net/gh/ncase/nutshell/nutshell.js"></script>
 </head>
 <body>
     <div class="container">
@@ -113,11 +114,11 @@
 
             
             <div class="utc">
-                <p>Time is measured relative to the <span class="und-dot blues">Prime Meridian</span></p>
-                <p>The global standard clock is UTC[Coordinated Universal Time], the time at Greenwich,UK.</p>
+                <p>Time is measured relative to the <a href="#prime-meridian" class="und-dot blues">:Prime Meridian</a></p>
+                <p>The global standard clock is <a href="#utc" class="und-dot blues">:UTC</a>, the time at Greenwich, London.</p>
                 <div class="east-west">
-                    <p>Moving EAST of Greenwich adds time</p>
-                    <p>Moving WEST of Greenwich subtracts time</p>
+                    <!-- <p>Moving EAST of Greenwich adds time</p> -->
+                    <!-- <p>Moving WEST of Greenwich subtracts time</p> -->
                 </div>
             </div>
   
@@ -143,6 +144,12 @@
         </div>
     </div>
 
+    <!-- for nutshelll -->
+    <h2>:x Prime Meridian</h2>
+    <p>Prime Meridian is the imaginary line of the 0° longitude that runs from North pole to South pole of Earth. It passes through Greenwich, London.</p>
+
+    <h2>:x Coordinated Universal Time (UTC)</h2>
+    <p>Coordinated Universal Time (UTC) is the primary time standard which is taken as a reference for the time of places throughout the world.s</p>
 
     <!-- code snippet given by amcharts map editor, didn't write this, edited the map on the editor and they gave this code to embed the map into this site.. later on i edited this part a bit tho :) -->
     <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
@@ -186,7 +193,7 @@
     waterSeries.mapPolygons.template.setAll({
         fill: am5.Color.fromString("#ffffff"), 
         fillOpacity: 0,
-        strokeOpacity: 0 
+        strokeOpacity: 0,
     });
 
     waterSeries.data.push({
@@ -209,7 +216,7 @@
     );
 
     var areaPolygonTemplate = areaSeries.mapPolygons.template;
-    areaPolygonTemplate.setAll({ fillOpacity: 1, strokeOpacity:0.2 });
+    areaPolygonTemplate.setAll({ fillOpacity: 1, strokeOpacity:1});
     areaPolygonTemplate.adapters.add("fill",function () {
         return am5.Color.fromString("#6fcf97")
     });
@@ -227,7 +234,8 @@
     zonePolygonTemplate.setAll({
     fill: am5.Color.fromString("#000000"), 
     fillOpacity: 0,
-    strokeOpacity:0.4,
+    strokeOpacity:1,
+    strokeWidth: 0.3,
     interactive: true,
     tooltipText: "{id}"
     });
@@ -263,8 +271,15 @@
     chart.appear(1000, 100);
     });
     </script>
-    
+    <script>
+        Nutshell.setOptions({
+            startOnLoad: true, 
+            lang: 'en',
+            dontEmbedHeadings: true,
+        });
+    </script>
     <script src="./script.js" type="module"></script>
+
 
 </body>
 </html>
