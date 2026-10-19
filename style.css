@@ -462,6 +462,10 @@ a {
     text-decoration: none;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 .calcn-info{
     font-size: 1.1rem;
     margin-top: 20px;
@@ -565,30 +569,27 @@ a {
 }
 
 .exceptions {
-    background: #173f74;
-    border: 5px solid #093164;
+    background: #ffffff;
+    border: 4px solid #093164;
     border-radius: 20px;
     margin: 20px 0;
-    color: #fff;
     padding: 20px;
 }
 
 .exceptions h3 {
     font-size: 1.5rem;
+    color: #093164;
 }
 .exceptions .info-p {
     margin: 0;
     font-weight: 500;
     font-size: 1rem;
     letter-spacing: normal;
-    color: #eeeeee;
+    color: #555555;
 }
 
-.exceptions .info-p span {
-    text-decoration: none;
-}
-.exceptions .info-p span:hover {
-    text-decoration: underline;
+ul {
+    padding-left: 20px;
 }
 
 @media screen and (max-width: 768px){
