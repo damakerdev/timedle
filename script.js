@@ -58,12 +58,12 @@ function mapClick(e){
     const fetchCountry = fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${long}&addressdetails=1&layer=address&zoom=3`)
         .then(res=>res.json())
         .then(data=>{
-            console.log(data)
+            // console.log(data)
             if(data.address.country===""){
                 selectedCountryElem.innerText="none";
                 return;
             }
-            console.log("country is "+data.address.country);
+            // console.log("country is "+data.address.country);
             selectedCountryElem.innerText=data.address.country
         })
         .catch(error=>console.error("error:"+error))
@@ -80,10 +80,10 @@ function mapClick(e){
                 minute:'2-digit',
                 hour12:true
             }).format(new Date())
-            console.log(`localtime is: ${localtime}`)
+            // console.log(`localtime is: ${localtime}`)
             // clockElem.innerText=localtime;
             selTz=tzone;
-            console.log(selTz)
+            // console.log(selTz)
             selTime=localtime;
         })
         .catch(error=>console.error("error:"+error))
@@ -107,7 +107,7 @@ const res = await fetch("./timezone-names.json")
 const tzArr=await res.json();
 // console.log(tzArr[0]);
 const choice=tzArr[Math.floor(Math.random()*tzArr.length)]
-console.log(choice)
+// console.log(choice)
 let toBeGuessed=setTimeBasedOnTimeZone(choice)
 clockElem.innerText=toBeGuessed;
 
@@ -168,7 +168,7 @@ function showPopup(msg,clr){
 function findTimezoneOffset(tz,date=new Date()){
     const utc=new Date(date.toLocaleString('en-US',{timeZone: 'UTC'}))
     const tzDate = new Date(date.toLocaleString('en-US',{ timeZone: tz}))
-    console.log((tzDate-utc)/60000)
+    // console.log((tzDate-utc)/60000)
     return (tzDate-utc)/60000;
 }
 
@@ -178,7 +178,7 @@ function directionHint(targetTz, guessTz){
     const guessedOffset = findTimezoneOffset(guessTz)
 
     const minDiff= targetOffset-guessedOffset;
-    console.log(minDiff);
+    // console.log(minDiff);
     let hrDiff=Math.abs(Math.floor(minDiff/60));
     let finalminDiff=Math.abs(minDiff%60);
     if(minDiff===0){
@@ -206,7 +206,7 @@ function onGuess(guessTime,count,guessedCountry,hintDirn){
         historyDiv.prepend(card)
     }
     if(guessTime===toBeGuessed){
-        console.log("CORRECT!!!");
+        // console.log("CORRECT!!!");
         winModal.classList.remove('hidden');
         mapCss.classList.add('win');
         selCss.style.display="none";
@@ -216,7 +216,7 @@ function onGuess(guessTime,count,guessedCountry,hintDirn){
         gameWon=true;
         return 1;
     } else {
-        console.log("INCORRECT");
+        // console.log("INCORRECT");
         if(count>=MAX_GUESS){
             showPopup(`Incorrect. No tries remaining`,'red');
         } else {
@@ -248,7 +248,7 @@ guessBtn.addEventListener('click',()=>{
 
     if(guessCount>=MAX_GUESS){
         guessBtn.disabled=true;
-        console.log("its done..")
+        // console.log("its done..")
         if(gameWon===null){
             loseModal.classList.remove('hidden');
             mapCss.classList.add('lose');
@@ -257,7 +257,7 @@ guessBtn.addEventListener('click',()=>{
         gameOver=true;
         return 0;
     }
-    console.log(guessCount)
+    // console.log(guessCount)
 });
 
 window.addEventListener('mousemove',(e)=>{
@@ -283,29 +283,3 @@ playAgainBtns.forEach(btn=>{
         window.location.reload()
     })
 })
-
-
-//timezone map
-// const tzMap = new maplibregl.Map({
-//     container:'timezone-map',
-//     style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
-//     center: [0,0],
-//     zoom: 1,
-//     minZoom: 1,
-//     maxZoom: 2,
-//     attributionControl: false 
-// })
-// tzMap.addControl(new maplibregl.AttributionControl(),'top-right')
-// tzMap.addControl(new maplibregl.GlobeControl(),'top-right')
-
-// tzMap.on('load',()=>{
-//     new GeoGrid({
-//         'map':tzMap,
-//         'gridStyle':  {
-//             'color': '#585858',
-//             'width': 1,
-//             'dasharray': [4,4]
-//         }
-//     })
-
-// })
