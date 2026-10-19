@@ -434,9 +434,11 @@ body {
 .info-para {
     font-size: 1.1rem;
     margin-bottom: 30px;
-    color: #555555;
 }
 
+.day-night {
+    margin-top: 20px;
+}
 
 .earth-spin {
     display: flex;
@@ -452,6 +454,18 @@ body {
 
 .greens {
     color: #129147;
+}
+
+.info-header {
+    text-align: left !important;
+    color: #484848;
+    font-style: italic;
+    font-size: 1.3rem !important;
+}
+
+.info-soln {
+    font-size: 1.1rem !important;
+    margin: 0 !important;
 }
 
 
@@ -497,7 +511,7 @@ a:hover {
 
 .earth-gif {
     width: 240px;
-    margin: 40px 0px;
+    margin: 25px 0px;
 }
 
 .earth-gif-phone{
@@ -633,7 +647,6 @@ ul {
     .info-para {
         font-size: 1rem;
         margin-bottom: 30px;
-        color: #555555;
     }
 
     .earth-gif {
