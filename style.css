@@ -354,7 +354,7 @@ body {
 }
 
 .info-text p {
-    font-size: 1rem;
+    font-size: 1.1rem;
     /* color: #555; */
     margin-bottom: 20px;
 }
@@ -432,7 +432,7 @@ body {
 }
 
 .info-para {
-    font-size: 1rem;
+    font-size: 1.1rem;
     padding: 5px;
     margin-bottom: 30px;
     color: #555555;
@@ -557,10 +557,38 @@ a {
 .east-west span {
     font-weight: 700;
     font-size: 1.2rem;
+    margin-bottom: 3px;
 }
 
 .nutshell {
     display: none;
+}
+
+.exceptions {
+    background: #173f74;
+    border: 5px solid #093164;
+    border-radius: 20px;
+    margin: 20px 0;
+    color: #fff;
+    padding: 20px;
+}
+
+.exceptions h3 {
+    font-size: 1.5rem;
+}
+.exceptions .info-p {
+    margin: 0;
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: normal;
+    color: #eeeeee;
+}
+
+.exceptions .info-p span {
+    text-decoration: none;
+}
+.exceptions .info-p span:hover {
+    text-decoration: underline;
 }
 
 @media screen and (max-width: 768px){
