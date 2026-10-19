@@ -28,4 +28,13 @@ While designing the learn section, I wanted a way to add meanings to the complex
 
 ---
 
+## Screenshots
+
+![game screenshot](./img/gamess-1.png)
+![game win screenshot](./img/game-ss2.png)
+![game blog screenshot](./img/game-ss3.png)
+![game blog screenshot](./img/game-ss4.png)
+
+---
+
 Happy Coding!!
