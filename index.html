@@ -90,17 +90,17 @@
     <img src="./img/separator.png" alt="" class="separator">
     <div class="info-container">
         <div class="info-text">
-            <div class="exceptions">
+            <div class="exceptions day-night">
                 <h3 class="info-header">It's 5AM for you but 9PM for your friend abroad. Why?</h3>
                 <p class="info-soln">Earth is a ball. The Sun can only light half of the Earth at a time, so noon for you is midnight for someone else.</p>
-                <img class="day-night" src="./img/day-night.png" alt="">
-            </div>
-            <div class="why">
-                <h3>What if the whole world used one clock?</h3>
-                <p>5:00 AM would be pitch dark for someone whereas noon for someone.</p>
-                <p>Offices, schools would start in the middle of the night in some places.</p>
-                <p>Thus, each region keeps its own clock, so that 5:00 AM means morning for every place. These regions are known as TIMEZONES.</p>
-            </div>
+                <img class="day-night-img" src="./img/day-night.png" alt="">
+            </div>  
+           
+            <h3>What is a timezone?</h3>
+            <p>A timezone is a region where everyone uses the same clock time, which is set so that noon is roughly the time when the sun is highest in the sky.</p>
+            <p>Timezones ensure that our mornings feel like mornings and nights feel like nights, wherever we live.</p>
+            <br>
+            
             <h3>How do timezones work?</h3>
             <div class="earth-spin">
                 <img class="earth-gif" src="./img/earth.gif" alt="">
@@ -110,23 +110,39 @@
                         <div class="calcn-container">
                             <span class="calcn-info">Rotation per hour:</span>
                             <div class="calcn">
-                                <div class="fracn">
-                                    <span class="num">360°</span>
-                                    <span class="deno">24hrs</span>
-                                </div> 
-                                <span>=</span>
-                                <span class="ans">15°/hr</span>
+                                <p class="ans">360° ÷ 24hrs = 15°/hr</p>
                             </div>
                         </div>
                         <img class="earth-gif-phone" src="./img/earth.gif" alt="">
                     </div>
-                    <p style="margin-top: 20px;">So, in 1 hour the sun moves across 15° of longitude.</p>
                 </div>                
             </div>
             <div class="utc">
-                <p>Thus, for timezones, the Earth is divided into 24 zones based on 15° increments in the longitude.</p>           
-                <p>Each of these 24 zones is given a time of its own, and time is measured relative to the <a href="#prime-meridian">:Prime Meridian</a></p>
-                <p>The time at the Prime Meridian is considered as the Global Standard Clock. It is known as <a href="#utc">:UTC</a>, the time at Greenwich, London.</p>
+                <p>So for every 15° you move east or west, the time shifts by an hour.</p>
+
+                <p style="text-align: center;" class="ans">360° ÷ 15° = 24 zones</p>
+
+                <p> So, the Earth is split into 24 timezones.</p>
+                
+                <h4>Where does the counting start for timezones?</h4>
+                <p>We need a reference longitude to measure timezones. Thus, the longitude passing through Greenwich, London is considered the <a href="#prime-meridian">:Prime Meridian</a>, the reference line for all timezones.</p>
+                <p>The reference clock, based on the Prime Meridian, is called <a href="#utc">:UTC</a>.</p>
+                <p>Each and every timezone is written as its distance from UTC.</p>
+                <div class="exceptions east-west">
+                    <div class="west">
+                        <p>UTC-5:00</p>
+                        <span>5 hours behind UTC</span>
+                    </div>
+                    <p class="arrow"><-</p>
+                    <div class="utc-txt">UTC</div>
+                    <p class="arrow">-></p>
+                    <div class="east">
+                        <p>UTC+5:00</p>
+                        <span>5 hours ahead of UTC</span>
+                    </div>
+                </div>
+                <p>The Sun rises in the east first, so places east of the Prime Meridian are ahead (+) and places west are behind (-).</p>
+
             </div>
             <div class="summary-graphic">
                 <p class="summary-txt">theoretical</p>
@@ -135,7 +151,7 @@
         </div>
         <div class="info">
             <h1 class="info-head">BUT</h1>
-            <h3 class="info-subhead">The timezone map is <span class="red-txt">not</span></br> so straightforward IRL.</h3>
+            <h3 class="info-subhead">Timezones are <span class="red-txt">not</span></br> so straightforward IRL.</h3>
         </div>
         <div class="exceptions">
             <h3>non-standard offsets</h3>
