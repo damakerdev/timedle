@@ -221,11 +221,25 @@ function onGuess(guessTime,count,guessedCountry,hintDirn){
         guessBtn.disabled=true;
         gameOver=true;
         gameWon=true;
+
+        if(typeof gtag=== 'function'){
+            gtag('event','game_win',{
+                'attempts':count,
+                'target_timezone':choice
+            })
+        }
+
         return 1;
     } else {
         // console.log("INCORRECT");
         if(count>=MAX_GUESS){
             showPopup(`Incorrect. No tries remaining`,'red');
+
+            if(typeof gtag=== 'function'){
+                gtag('event','game_lose',{
+                    'target_timezone':choice
+                })
+            }
         } else {
             showPopup(`Incorrect. You have ${MAX_GUESS-guessCount} tries remaining.`,'red');
         }
@@ -246,6 +260,13 @@ guessBtn.addEventListener('click',()=>{
     }
     guessCount++;
     remainingGuess.innerText=guessCount;
+
+    if(typeof gtag ==='function'){
+        gtag('event','make_guess',{
+            'guess_number':guessCount,
+            'country_guessed':selectedCountryElem.innerText
+        })
+    }
 
     if(!selTz || !selTime){
         showPopup('Please try again!',"blue");
