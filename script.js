@@ -41,6 +41,7 @@ let gameWon=null;
 let targetInterval=null;
 let selTz=null;
 let mapClicked=null;
+let isOceanClick=false;
 
 remainingGuess.innerText=guessCount;
 
@@ -59,14 +60,20 @@ function mapClick(e){
         .then(res=>res.json())
         .then(data=>{
             // console.log(data)
-            if(data.address.country===""){
-                selectedCountryElem.innerText="none";
+            if(data.error || !data.address || !data.address.country){
+                selectedCountryElem.innerText="invalid";
+                isOceanClick=true;
                 return;
             }
             // console.log("country is "+data.address.country);
-            selectedCountryElem.innerText=data.address.country
+            selectedCountryElem.innerText=data.address.country;
+            isOceanClick=false;
         })
-        .catch(error=>console.error("error:"+error))
+        .catch(error=>{
+            console.error("error:"+error)
+            selectedCountryElem.innerText="none"
+            isOceanClick=true;
+        })
 
     const fetchTz = fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&timezone=auto&current_weather=true`)
         .then(res=>res.json())
@@ -233,6 +240,10 @@ guessBtn.addEventListener('click',()=>{
         showPopup('Click on a country on the map.','blue')
         return;
     };
+    if(isOceanClick){
+        showPopup('Try again. Please click on a country!','red')
+        return;
+    }
     guessCount++;
     remainingGuess.innerText=guessCount;
 
